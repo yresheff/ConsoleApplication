@@ -1596,7 +1596,7 @@ namespace Exercise_13_4
                 }
                 else
                 {
-                    Console.WriteLine("this is not a program checker object. We can use only program converter methods1");
+                    Console.WriteLine("this is not a program checker object. We can use only program converter methods2");
                 }
             }
 
