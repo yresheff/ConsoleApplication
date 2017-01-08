@@ -1493,6 +1493,9 @@ namespace Exercise_13_3
 
 }
 */
+/*
+ check to see if an object can implemenmt interface. if it is create a new object and cast the interface
+ */
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -1505,6 +1508,7 @@ namespace Exercise_13_4
         void convertToVB(string S);
     }
 
+    //one interface extending another
     interface ICodeChecker : IConvertible
     {
         bool checkYourCode(string S);
