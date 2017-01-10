@@ -734,7 +734,7 @@ namespace Exercise_8_1
 /* two ways to set a value for a variable: 
  * 1. using the constructor. the constructor has an input parameter which insde sets the private variable of the class
  * 2. using a property. inside the property the private variable is set. the client calls the property as if it is member field. 
- */ 
+ */
 
 ////////////////////////////////////////////////////////////////
 /*using System;
@@ -1493,10 +1493,7 @@ namespace Exercise_13_3
 
 }
 */
-/*
- check to see if an object can implemenmt interface. if it is create a new object and cast the interface
- */
-using System;
+/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -1508,7 +1505,6 @@ namespace Exercise_13_4
         void convertToVB(string S);
     }
 
-    //one interface extending another
     interface ICodeChecker : IConvertible
     {
         bool checkYourCode(string S);
@@ -1607,6 +1603,113 @@ namespace Exercise_13_4
        }
     }
 
+}*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+namespace Exercise_14_1
+{
+    public abstract class Animal
+    {
+        private int weight;
+        private string name;
+
+        public abstract void Speak();
+        public abstract void Move();
+
+       //public abstract string ToString();
+    }
+
+    public class Cat : Animal
+    {
+        private int weight;
+        private string name;
+        private string myString;
+
+        //constrcutor
+        public Cat(int CatWeight, string CatName, string inputString)
+        {
+            weight = CatWeight;
+            name = CatName;
+            myString = inputString;
+        }
+
+        public override void Speak()
+        {
+            Console.WriteLine("cat speaks now");
+            //throw new NotImplementedException();
+        }
+        public override void Move()
+        {
+            Console.WriteLine("cat moves now");
+            //throw new NotImplementedException();
+        }
+        public override string ToString()
+        {
+            //Console.WriteLine("cat convert to string now");
+            return myString;
+            //throw new NotImplementedException();
+        }
+    }
+
+    public class Dog : Animal
+    {
+        private int weight;
+        private string name;
+
+        private string myString;
+
+        //constrcutor
+        public Dog(int DogWeight, string DogName,string inputString)
+        {
+            weight = DogWeight;
+            name = DogName;
+            myString = inputString;
+        }
+
+        public override void Speak()
+        {
+            Console.WriteLine("dog speaks now");
+            //throw new NotImplementedException();
+        }
+        public override void Move()
+        {
+            Console.WriteLine("dog moves now");
+            //throw new NotImplementedException();
+        }
+        public override string ToString()
+        {
+            //Console.WriteLine("dog convert to string now");
+            return myString;
+            //throw new NotImplementedException();
+        }
+    }
+
+    public class myProgram
+    {
+        static void Main()
+        {
+            string testString;
+
+            Animal[] myAnimalsArray = new Animal[3];
+            myAnimalsArray[0] = new Cat(3, "black","blah1");
+            myAnimalsArray[1] = new Cat(6, "white with brown stripes", "blah2");
+            myAnimalsArray[2] = new Dog(10, "blackish", "blah3");
+
+            myAnimalsArray[0].Speak();
+            myAnimalsArray[0].Move();
+            myAnimalsArray[0].ToString();
+
+            myAnimalsArray[1].Speak();
+            myAnimalsArray[1].Move();
+            myAnimalsArray[1].ToString();
+
+            myAnimalsArray[2].Speak();
+            myAnimalsArray[2].Move();
+            testString = myAnimalsArray[2].ToString();
+            Console.WriteLine("test string is {0}", testString);
+        }
+    }
 }
-
-
