@@ -1604,8 +1604,14 @@ namespace Exercise_13_4
     }
 
 }*/
-
-using System;
+/*
+ * abstract class and abstract methods
+ * derived class and override method
+ * create an array of abstract objects. members of array of derived class objects
+ * ToString example. ToString is a built in function. therefore we need to use override in order to create our own.
+ * protected member example. can be used by derived classes
+ */
+/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -1613,19 +1619,18 @@ namespace Exercise_14_1
 {
     public abstract class Animal
     {
-        private int weight;
-        private string name;
+        protected int weight;
+        protected string name;
 
         public abstract void Speak();
         public abstract void Move();
 
-       //public abstract string ToString();
+        //ToString is a built in function. therefore we need to use override in order to create our own.
+        public abstract override string ToString();
     }
 
     public class Cat : Animal
     {
-        private int weight;
-        private string name;
         private string myString;
 
         //constrcutor
@@ -1648,17 +1653,12 @@ namespace Exercise_14_1
         }
         public override string ToString()
         {
-            //Console.WriteLine("cat convert to string now");
-            return myString;
-            //throw new NotImplementedException();
+            return "My name is " + this.name + " and I weigh  " + this.weight;
         }
     }
 
     public class Dog : Animal
     {
-        private int weight;
-        private string name;
-
         private string myString;
 
         //constrcutor
@@ -1681,9 +1681,7 @@ namespace Exercise_14_1
         }
         public override string ToString()
         {
-            //Console.WriteLine("dog convert to string now");
-            return myString;
-            //throw new NotImplementedException();
+            return "My name is " + this.name + ". I weigh  " + this.weight + ". my string is "+ this.myString;
         }
     }
 
@@ -1709,7 +1707,120 @@ namespace Exercise_14_1
             myAnimalsArray[2].Speak();
             myAnimalsArray[2].Move();
             testString = myAnimalsArray[2].ToString();
-            Console.WriteLine("test string is {0}", testString);
+            Console.WriteLine(testString);
+        }
+    }
+}*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+namespace Exercise_14_2
+{
+    public abstract class Animal : IComparable<Animal>
+
+    {
+        protected int weight;
+        protected string name;
+
+        public abstract void Speak();
+        public abstract void Move();
+
+        //ToString is a built in function. therefore we need to use override in order to create our own.
+        public abstract override string ToString();
+
+        public int CompareTo(Animal nextOne)
+        {
+            return this.weight.CompareTo(nextOne.weight);
+        }
+
+    }
+
+    public class Cat : Animal
+    {
+        private string myString;
+
+        //constrcutor
+        public Cat(int CatWeight, string CatName, string inputString)
+        {
+            weight = CatWeight;
+            name = CatName;
+            myString = inputString;
+        }
+
+        public override void Speak()
+        {
+            Console.WriteLine("cat speaks now");
+            //throw new NotImplementedException();
+        }
+        public override void Move()
+        {
+            Console.WriteLine("cat moves now");
+            //throw new NotImplementedException();
+        }
+        public override string ToString()
+        {
+            return "My name is " + this.name + " and I weigh  " + this.weight;
+        }
+    }
+
+    public class Dog : Animal
+    {
+        private string myString;
+
+        //constrcutor
+        public Dog(int DogWeight, string DogName, string inputString)
+        {
+            weight = DogWeight;
+            name = DogName;
+            myString = inputString;
+        }
+
+        public override void Speak()
+        {
+            Console.WriteLine("dog speaks now");
+            //throw new NotImplementedException();
+        }
+        public override void Move()
+        {
+            Console.WriteLine("dog moves now");
+            //throw new NotImplementedException();
+        }
+        public override string ToString()
+        {
+            return "My name is " + this.name + ". I weigh  " + this.weight + ". my string is " + this.myString;
+        }
+    }
+
+    public class myProgram
+    {
+        static void Main()
+        {
+           string testString;
+
+            List<Animal> myAnimals = new List<Animal>();
+
+            myAnimals.Add(new Cat(3, "black", "blah1"));
+            //Animal[] myAnimalsArray = new Animal[3];
+            //myAnimals[0] = new Cat(3, "black", "blah1");
+            //myAnimals[1] = new Cat(6, "white with brown stripes", "blah2");
+            //myAnimals[2] = new Dog(10, "blackish", "blah3");
+
+            myAnimals[0].Speak();
+            myAnimals[0].Move();
+            testString = myAnimals[0].ToString();
+            Console.WriteLine(testString);
+            //myAnimals[0].ToString();
+
+            /* myAnimalsArray[1].Speak();
+             myAnimalsArray[1].Move();
+             myAnimalsArray[1].ToString();
+
+             myAnimalsArray[2].Speak();
+             myAnimalsArray[2].Move();
+             testString = myAnimalsArray[2].ToString();
+             Console.WriteLine(testString);*/
         }
     }
 }
