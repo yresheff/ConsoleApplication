@@ -142,6 +142,7 @@ namespace Exercise_3_4_Definite_Assignment
 
 /*
 //exercise 4.1
+///////////////////////////////////////////////////////////////////////////////////////////
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -164,6 +165,7 @@ namespace exercise_4_1_operators
 }
 */
 //exercise 4.3
+///////////////////////////////////////////////////////////////////////////////////////////
 /*
 using System;
 using System.Collections.Generic;
@@ -206,6 +208,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 namespace exercise_4_4_operators
+//////////////////////////////////////////////////////////////////////////////////////////////
 {
     class Values
     {
@@ -1716,7 +1719,7 @@ namespace Exercise_14_1
  * Sort() method
  * CompareTo() method tells sort which member of the object to sort on
  */
-using System;
+/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -1793,7 +1796,210 @@ namespace Exercise_14_2
                 Console.WriteLine("animal weight is {0}", myAnimals[i].ToString());
             }
 
-            Console.WriteLine("\nafter sorting:");
+            Console.WriteLine("\nafter sorting by name:");
+
+            myAnimals.Sort();
+
+            for (int i = 0; i < myAnimals.Count; i++)
+            {
+                Console.WriteLine("animal weight is {0}", myAnimals[i].ToString());
+            }
+
+        }
+    }
+}*/
+/*
+ * using queue and stack
+ */
+/*using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+namespace Exercise_14_3
+{
+    public abstract class Animal : IComparable<Animal>
+
+    {
+        protected int weight;
+        protected string name;
+
+        //ToString is a built in function. therefore we need to use override in order to create our own.
+        public abstract override string ToString();
+
+        // the CompareTo method tells sort which member of the object to sort on
+        public int CompareTo(Animal nextOne)
+        {
+            return this.name.CompareTo(nextOne.name);
+        }
+
+    }
+
+    public class Cat : Animal
+    {
+        private string myString;
+
+        //constrcutor
+        public Cat(int CatWeight, string CatName, string inputString)
+        {
+            weight = CatWeight;
+            name = CatName;
+            myString = inputString;
+        }
+
+        public override string ToString()
+        {
+            return "My name is " + this.name + " and I weigh  " + this.weight + ". my string is " + this.myString; ;
+        }
+    }
+
+    public class Dog : Animal
+    {
+        private string myString;
+
+        //constrcutor
+        public Dog(int DogWeight, string DogName, string inputString)
+        {
+            weight = DogWeight;
+            name = DogName;
+            myString = inputString;
+        }
+
+        public override string ToString()
+        {
+            return "My name is " + this.name + ". I weigh  " + this.weight + ". my string is " + this.myString;
+        }
+    }
+
+    public class myProgram
+    {
+        static void Main()
+        {
+
+            Queue<Animal> myAnimals = new Queue<Animal>();
+
+            myAnimals.Enqueue(new Cat(30, "cblack3", "blah3"));
+            myAnimals.Enqueue(new Cat(4, "ablack4", "blah4"));
+            myAnimals.Enqueue(new Dog(50, "aablack5", "blah5"));
+
+            Console.WriteLine("using queue FIFO:");
+            PrintValues(myAnimals);
+
+
+           Stack<Animal> myAnimalsStack = new Stack<Animal>();
+
+            myAnimalsStack.Push(new Cat(30, "cblack3", "blah3"));
+            myAnimalsStack.Push(new Cat(4, "ablack4", "blah4"));
+            myAnimalsStack.Push(new Dog(50, "aablack5", "blah5"));
+
+            Console.WriteLine("using stack LIFO:");
+            PrintValues(myAnimalsStack);
+    }
+    public static void PrintValues(IEnumerable<Animal> myCollection)
+        {
+            IEnumerator<Animal> myEnumerator = myCollection.GetEnumerator();
+            while (myEnumerator.MoveNext())
+            {
+                Console.WriteLine("{0}", myEnumerator.Current);
+            }
+        }
+
+    }
+}*/
+
+/*
+ * using the IComparable interface
+ * Sort() method
+ * CompareTo() method tells sort which member of the object to sort on
+ */
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+namespace Exercise_14_2
+{
+    public abstract class Animal : IComparable<Animal>
+
+    {
+        protected int weight;
+        protected string name;
+
+        //ToString is a built in function. therefore we need to use override in order to create our own.
+        public abstract override string ToString();
+
+        // the CompareTo method tells sort which member of the object to sort on
+        public int CompareTo(Animal nextOne)
+        {
+                return this.name.CompareTo(nextOne.name);
+        }
+
+        public int CompareTo(Animal nextOne, int sortMethod)
+        {
+            if (sortMethod==1)
+                return this.name.CompareTo(nextOne.name);
+            else
+                return this.name.CompareTo(nextOne.weight);
+        }
+
+    }
+
+    public class Cat : Animal
+    {
+        private string myString;
+
+        //constrcutor
+        public Cat(int CatWeight, string CatName, string inputString)
+        {
+            weight = CatWeight;
+            name = CatName;
+            myString = inputString;
+        }
+
+        public override string ToString()
+        {
+            return "My name is " + this.name + " and I weigh  " + this.weight + ". my string is " + this.myString; ;
+        }
+    }
+
+    public class Dog : Animal
+    {
+        private string myString;
+
+        //constrcutor
+        public Dog(int DogWeight, string DogName, string inputString)
+        {
+            weight = DogWeight;
+            name = DogName;
+            myString = inputString;
+        }
+
+        public override string ToString()
+        {
+            return "My name is " + this.name + ". I weigh  " + this.weight + ". my string is " + this.myString;
+        }
+    }
+
+    public class myProgram
+    {
+        static void Main()
+        {
+
+            int sortMethodInputString;
+
+            List<Animal> myAnimals = new List<Animal>();
+
+            myAnimals.Add(new Cat(30, "cblack3", "blah3"));
+            myAnimals.Add(new Cat(4, "ablack4", "blah4"));
+            myAnimals.Add(new Dog(50, "aablack5", "blah5"));
+
+            Console.WriteLine("before sorting:");
+
+            for (int i = 0; i < myAnimals.Count; i++)
+            {
+                Console.WriteLine("animal weight is {0}", myAnimals[i].ToString());
+            }
+
+            Console.WriteLine("\nenter sort method (1 for name and 2 for weight)");
+            sortMethodInputString = int.Parse(Console.ReadLine());
 
             myAnimals.Sort();
 
@@ -1805,3 +2011,4 @@ namespace Exercise_14_2
         }
     }
 }
+
