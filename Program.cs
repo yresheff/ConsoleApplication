@@ -1314,6 +1314,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 namespace Exercise_11_2
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 {
     public abstract class Telephone
     {
@@ -1383,6 +1384,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 namespace Exercise_13_2
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 {
     interface IConvertible 
     {
@@ -1437,6 +1439,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 namespace Exercise_13_3
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 {
     interface IConvertible 
     {
@@ -1501,6 +1504,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 namespace Exercise_13_4
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 {
     interface IConvertible 
     {
@@ -1619,6 +1623,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 namespace Exercise_14_1
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 {
     public abstract class Animal
     {
@@ -1724,6 +1729,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 namespace Exercise_14_2
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 {
     public abstract class Animal : IComparable<Animal>
 
@@ -1816,6 +1822,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 namespace Exercise_14_3
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 {
     public abstract class Animal : IComparable<Animal>
 
@@ -1911,11 +1918,12 @@ namespace Exercise_14_3
  * Sort() method
  * CompareTo() method tells sort which member of the object to sort on
  */
-using System;
+/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-namespace Exercise_14_2
+namespace Exercise_14_4
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 {
     public abstract class Animal : IComparable<Animal>
 
@@ -2008,6 +2016,55 @@ namespace Exercise_14_2
                 Console.WriteLine("animal weight is {0}", myAnimals[i].ToString());
             }
 
+        }
+    }
+}*/
+
+/*
+ * strings, copy, concatenate, index, substring
+ */
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+namespace Exercise_15_1
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+{
+    class Tester
+    {
+        public void myProgram()
+        {
+            string s1 = "Hello ";
+            string s2 = "World";
+            string s3 = @"Come visit us at http://www.google.com";
+            string s4 = string.Concat(s1, s2);
+            string s5 = "world";
+            string s6 = s3;
+            string[] myStrings = new string[6];
+            myStrings[0] = s1;
+            myStrings[1] = s2;
+            myStrings[2] = s3;
+            myStrings[3] = s4;
+            myStrings[4] = s5;
+            myStrings[5] = s6;
+
+            for (int i = 0; i < 5; i++)
+            {
+                //Console.WriteLine("the length of {0} is {1}", myStrings[i], myStrings[i].Length);
+                //Console.WriteLine("the third character in {0} is {1}", myStrings[i],myStrings[i].Substring(2,1));
+                if (myStrings[i].IndexOf("H")==-1)
+                    Console.WriteLine("the character H does not apears in {0}", myStrings[i]);
+                else
+                Console.WriteLine("the position of the character H apears in {0} {1}", myStrings[i], myStrings[i].IndexOf("H"));
+            }
+        }
+
+
+        static void Main()
+        {
+            Tester t = new Tester();
+            t.myProgram();
         }
     }
 }
