@@ -2022,9 +2022,11 @@ namespace Exercise_14_4
 
 /*
  * strings, copy, concatenate, index, substring
+ * case sensative and insensative
+ * ternary operators
  */
 
-using System;
+/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -2035,11 +2037,11 @@ namespace Exercise_15_1
     {
         public void myProgram()
         {
-            string s1 = "Hello ";
-            string s2 = "World";
+            string s1 = "Hello";
+            string s2 = "world";
             string s3 = @"Come visit us at http://www.google.com";
             string s4 = string.Concat(s1, s2);
-            string s5 = "world";
+            string s5 = "World";
             string s6 = s3;
             string[] myStrings = new string[6];
             myStrings[0] = s1;
@@ -2051,13 +2053,59 @@ namespace Exercise_15_1
 
             for (int i = 0; i < 5; i++)
             {
-                //Console.WriteLine("the length of {0} is {1}", myStrings[i], myStrings[i].Length);
-                //Console.WriteLine("the third character in {0} is {1}", myStrings[i],myStrings[i].Substring(2,1));
-                if (myStrings[i].IndexOf("H")==-1)
-                    Console.WriteLine("the character H does not apears in {0}", myStrings[i]);
+                // findinglength
+               Console.WriteLine("the length of {0} is {1}", myStrings[i], myStrings[i].Length);
+
+                //finding third character in a string
+                Console.WriteLine("the third character in {0} is {1}", myStrings[i],myStrings[i].Substring(2,1));
+                
+                //does character H exist
+                 if (myStrings[i].IndexOf("H")==-1)
+                   Console.WriteLine("the character H does not appears in {0}", myStrings[i]);
                 else
-                Console.WriteLine("the position of the character H apears in {0} {1}", myStrings[i], myStrings[i].IndexOf("H"));
-            }
+                Console.WriteLine("the position of the character H in {0} {1}", myStrings[i], myStrings[i].IndexOf("H"));
+
+                 // comparing string, case sensative  and insensative. using ternary operators
+                if (i != 1)
+                {
+                    Console.WriteLine("string {0} is {1} string {2}", myStrings[i], String.Compare(myStrings[i], myStrings[1], true)==0? "same as ": "different from ", myStrings[1]);
+                    if (string.Compare(myStrings[i], myStrings[1], true) == 0)
+                        Console.WriteLine("compare with case insensitive. string {0} is the same as string 2", myStrings[i]);
+                }
+            }   
+        }
+
+
+        static void Main()
+        {
+            Tester t = new Tester();
+            t.myProgram();
+        }
+    }
+}*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+namespace Exercise_15_2
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+{
+    class Tester
+    {
+        public void myProgram()
+        {
+            string s1 = "To be,or not to be;that is the question: Whether 'tis nobler in the mind to suffer. The slings and arrows of outrageous fortune, Or,to take arms against a sea of troubles, And,by opposing,end them";
+            string reversedString="";
+            string tempString;
+            int nextSpace;
+            int currentIndex;
+
+            nextSpace = s1.IndexOf(" ");
+            currentIndex = nextSpace;
+            tempString = s1.Substring(0, currentIndex);
+            reversedString = tempString + " " +reversedString;
+            Console.WriteLine(reversedString);
         }
 
 
@@ -2068,4 +2116,5 @@ namespace Exercise_15_1
         }
     }
 }
+
 
